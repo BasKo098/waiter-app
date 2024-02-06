@@ -1,4 +1,5 @@
 //import { Routes, Route } from 'react-router-dom';
+import './styles/global.scss';
 
 const App = () => {
   return (
