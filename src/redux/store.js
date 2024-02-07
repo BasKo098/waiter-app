@@ -1,15 +1,21 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import initialState from './initialState';
+import { createStore } from 'redux';
+import initialState from './initailState';
+import { combineReducers } from 'redux';
 import tableReducer from './tableReducer';
+import { applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+
+
+const subreducers = {
+    table: tableReducer,
+}
+  
+const reducer = combineReducers(subreducers);
 
 const store = createStore(
-  tableReducer,
+  reducer,
   initialState,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
-  )
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 export default store;

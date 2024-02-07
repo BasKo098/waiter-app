@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <Navbar bg="primary" variant="dark" expand="sm" className="justify-content-between mt-4 mb-4 rounded px-3">
       <Container>
-        <Navbar.Brand href="#/">Waiter.app</Navbar.Brand>
+        <Navbar.Brand href="#/waiter">Waiter.app</Navbar.Brand>
         <Nav>
           <Nav.Link as={NavLink} to="/">
             Home
