@@ -7,13 +7,21 @@ import { Container } from 'react-bootstrap';
 
 const NavBar = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="sm" className="justify-content-between mt-4 mb-4 rounded px-3">
+    <Navbar bg="primary" variant="dark" expand="sm" className="mt-4 mb-4 rounded px-3">
       <Container>
-        <Navbar.Brand href="#/waiter">Waiter.app</Navbar.Brand>
         <Nav>
-          <Nav.Link as={NavLink} to="/">
-            Home
-          </Nav.Link>
+          <Nav.Item>
+            <Nav.Link as={NavLink} to="/waiter">
+              WaiterApp
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <Nav>
+          <Nav.Item>
+            <Nav.Link as={NavLink} to="/">
+              Home
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
       </Container>
     </Navbar>
