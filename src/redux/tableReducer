@@ -1,0 +1,22 @@
+import { API_URL } from "../config.js";
+// selectors
+export const getTablebyId =({ tables}, tableId) => tables.find(table => table.id === tableId);
+export const getAllTable = ({tables}) => tables;
+
+//actions
+const createActionName = actionName => `app/tables/${actionName}`;
+const ADD_TABLE = createActionName('ADD_TABLE');
+const REMOVE_TABLE = createActionName('REMOVE_TABLE');
+const UPDATE_TABLES = createActionName('UPDATE_TABLES');
+const EDIT_TABLES = createActionName('EDIT_TABLES');
+
+export const addTable = payload => ({type: ADD_TABLE, payload});
+export const removeTable = payload => ({type: REMOVE_TABLE, payload});
+export const updateTables = payload => ({type:UPDATE_TABLES, payload});
+export const editTables = payload => ({type:EDIT_TABLES, payload});
+
+const tableReducer = () => {
+
+};
+
+export default tableReducer;
