@@ -1,4 +1,4 @@
-import AllTables from "./AllTables/AllTables";
+import AllTables from "../../features/AllTables/AllTables";
 
 
 const Home = () => {

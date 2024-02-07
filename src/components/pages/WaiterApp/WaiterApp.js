@@ -1,4 +1,4 @@
-import SingleTableForm from "./SingleTableForm/SingleTableForm";
+import SingleTableForm from "../../features/SingleTableForm/SingleTableForm";
 
 const WaiterApp = () => {
     return(
