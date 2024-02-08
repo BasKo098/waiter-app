@@ -26,29 +26,29 @@ const SingleTableForm = () => {
 
     const handleEditTable= (event) =>{
         event.preventDefault();
+        const parsedPeopleAmount = validationAndParseData(peopleAmount);
+        const parsedMaxPeopleAmount = validationAndParseData(maxPeopleAmount);
+        const parsedBill = validationAndParseData(bill);
+
+        const updatedBill = status !== "Busy" ? 0 : parsedBill;
+        const updatedPeopleAmount = status === "Free" || status === "Cleaning" ? 0 : parsedPeopleAmount;
+        const updatedMaxPeopleAmount = status === "Free" || status === "Cleaning" ? 0 : parsedMaxPeopleAmount;
+        
         const thisTable = {
             id: parseInt(id),
             status: status,
-            peopleAmount: validationAndParseData(peopleAmount),
-            maxPeopleAmount: validationAndParseData(maxPeopleAmount),
-            bill: validationAndParseData(bill),
+            peopleAmount: updatedPeopleAmount,
+            maxPeopleAmount: updatedMaxPeopleAmount,
+            bill: updatedBill,
         };
-        
-        if (status !== "Busy"){
-            thisTable.bill = 0;
-        };
-
-        if (status === "Free" || status === "Cleaning"){
-            thisTable.peopleAmount = 0;
-            thisTable.maxPeopleAmount = 0;
-        };
-
+    
         dispatch(editTableRequest(thisTable, navigate('/')));
     };
 
     useEffect(() => {
         if (!singleTable){
-            navigate('/')
+            navigate('/');
+            return null;
         }
     },[singleTable,navigate]);
 
@@ -70,6 +70,7 @@ const SingleTableForm = () => {
             setMaxPeopleAmount(0);
         }
     }, [peopleAmount, maxPeopleAmount]);
+
 
     if (!singleTable) {
         return <div>Loading...</div>; 
