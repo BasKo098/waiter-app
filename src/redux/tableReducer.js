@@ -24,7 +24,7 @@ export const fetchTables = () => {
         .then(tables => dispatch(updateTables(tables)));
     }
   };
-
+// action creators
   export const addTableRequest = (newTable) => {
     return (dispatch) => {
         const options = {
@@ -36,11 +36,10 @@ export const fetchTables = () => {
         };
         fetch(`${API_URL}/tables`, options)
             .then(() => {
-                console.log("Nowa tabela dodana na serwerze:", newTable); // Dodanie logu
                 dispatch(addTable(newTable))
             })
             .catch(error => {
-                console.error("Błąd podczas dodawania nowej tabeli:", error); // Dodanie logu błędu
+                console.error("Błąd podczas dodawania newTable:", error); 
             });
     };
 };
@@ -71,21 +70,6 @@ export const fetchTables = () => {
     };
   };
 
-  export const updateTablesRequest = allTables => {
-    return dispatch => {
-      const options = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(allTables)
-      };
-      fetch(`${API_URL}/tables/`, options)
-        .then(() => dispatch(updateTables(allTables)));
-    };
-  };
-
-// action creators
 const tablesReducer = (statePart = [], action) => {
     switch (action.type) {
       case ADD_TABLE:
