@@ -14,6 +14,7 @@ const SingleTableForm = () => {
     const {tableId} = useParams();
     const singleTable = useSelector(state => getTableById(state, parseInt(tableId)));
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const id = singleTable.id;
     const [status, setStatus] = useState(singleTable.status);
     const [maxPeopleAmount, setMaxPeopleAmount]= useState(singleTable.maxPeopleAmount);
