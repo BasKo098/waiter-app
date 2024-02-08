@@ -1,4 +1,4 @@
-import { API_URL } from "../config.js";
+import { API_URL } from "./config.js";
 import shortid from "shortid";
 // selectors
 export const getTableById =({ tables}, tableId) => tables.find(table => table.id === tableId);
@@ -30,15 +30,20 @@ export const fetchTables = () => {
         const options = {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(newTable),
         };
-            fetch('${API_URL}/tables', options)
-            then(() => dispatch(addTable(newTable)))
-    }
-  };
-
+        fetch(`${API_URL}/tables`, options)
+            .then(() => {
+                console.log("Nowa tabela dodana na serwerze:", newTable); // Dodanie logu
+                dispatch(addTable(newTable))
+            })
+            .catch(error => {
+                console.error("Błąd podczas dodawania nowej tabeli:", error); // Dodanie logu błędu
+            });
+    };
+};
   export const removeTableRequest = tableId => {
     return (dispatch) => {
       const options = {
@@ -88,7 +93,7 @@ const tablesReducer = (statePart = [], action) => {
       case REMOVE_TABLE:
         return statePart.filter(table => table.id !== action.payload);
       case UPDATE_TABLES:
-         return {...statePart, tables:action.payload};
+         return action.payload;
       case EDIT_TABLE:
             return statePart.map(table =>
               table.id === action.payload.id ? { ...table, ...action.payload } : table);

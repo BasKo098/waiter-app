@@ -3,37 +3,40 @@ import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Row, Col } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';
-//import { useSelector } from 'react-redux';
-
-
+import { getAllTables } from '../../../redux/tableReducer';
+import { useSelector } from 'react-redux';
 
 
 const AllTables = () => {
 
-    //const table = useSelector (state=> getTablebyId(state));
-    //const tables = useSelector (state= getAllTables(state));
+    const tables = useSelector(getAllTables);
+    console.log(tables);
+
 
     return (
         <div>
             <h1>All tables</h1>
             <Container>
-                <Row className="align-items-center">
+                {tables.map(table => (
+                <Row key={table.id} className="align-items-center">
                     <Col>
                         <Row>
                             <Col>
-                                <h2>Table 1</h2>
+                                <h2>Table{table.id}</h2>
                             </Col>
                             <Col>
-                                <p className="px-0">Status:</p>
+                                <p className="px-0"></p>
+                                <p><strong>Status:</strong>{table.status}</p>
                             </Col>
                         </Row>
                     </Col>
                     <Col className="text-end">
-                        <NavLink to="/">
+                        <NavLink to={`/table/${table.id}`}>
                             <Button variant="primary">Show more</Button>
                         </NavLink>
                     </Col>
                 </Row>
+                ))}
             </Container>
         </div>
     )
