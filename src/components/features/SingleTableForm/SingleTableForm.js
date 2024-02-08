@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTableById } from '../../../redux/tableReducer';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';}
+import { useNavigate } from 'react-router-dom';
 import { editTableRequest } from '../../../redux/tableReducer';
 import Form from 'react-bootstrap/Form';
 import { Row, Col, Button, Form as ReactForm } from "react-bootstrap";
