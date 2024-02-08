@@ -1,8 +1,6 @@
-
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getTableById } from '../../../redux/tableReducer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { editTableRequest } from '../../../redux/tableReducer';
@@ -36,21 +34,47 @@ const SingleTableForm = () => {
             bill: validationAndParseData(bill),
         };
         
-        if (status !== "Bussy"){
+        if (status !== "Busy"){
             thisTable.bill = 0;
         };
 
-        if (status === "Free"){
+        if (status === "Free" || status === "Cleaning"){
             thisTable.peopleAmount = 0;
             thisTable.maxPeopleAmount = 0;
         };
-        dispatch(editTableRequest(thisTable, navigate));
-    }
+
+        dispatch(editTableRequest(thisTable, navigate('/')));
+    };
+
+    useEffect(() => {
+        if (!singleTable){
+            navigate('/')
+        }
+    },[singleTable,navigate]);
+
+
+
+    useEffect(() => { 
+        const peopleAmountValue = parseInt(peopleAmount);
+        const maxPeopleAmountValue = parseInt(maxPeopleAmount);
+    
+        if (peopleAmountValue > maxPeopleAmountValue){
+            setPeopleAmount(maxPeopleAmountValue)
+        };
+    
+        if (peopleAmountValue < 0 || isNaN(peopleAmountValue)) {
+            setPeopleAmount(0);
+        }
+    
+        if (maxPeopleAmountValue < 0 || isNaN(maxPeopleAmountValue)){
+            setMaxPeopleAmount(0);
+        }
+    }, [peopleAmount, maxPeopleAmount]);
 
     if (!singleTable) {
         return <div>Loading...</div>; 
     }
-    else 
+    
     return(
         <div>
             <h1>Table:{id}</h1>
@@ -63,7 +87,7 @@ const SingleTableForm = () => {
                         <Col sm={3}>
                             <Form.Select value= {status} onChange={ event => setStatus(event.target.value)} aria-label="Default select example">
                                 <option value="Free">Free</option>
-                                <option value="Bussy">Bussy</option>
+                                <option value="Busy">Busy</option>
                                 <option value="Reserved">Reserved</option>
                                 <option value="Cleaning">Cleaning</option>
                             </Form.Select>
@@ -84,7 +108,8 @@ const SingleTableForm = () => {
                         </Col>
                     </Row>
                 </Form.Group>
-                <Form.Group>
+                {status !== "Reserved" && (
+                <Form.Group >
                     <Row className='mb-3'>
                         <Form.Label column sm={1} htmlFor="bill">
                             <strong>Bill:</strong>
@@ -94,6 +119,7 @@ const SingleTableForm = () => {
                         </Col>
                     </Row>
                 </Form.Group>
+                )}
                 <Form.Group>
                     <Row className='mb-2'>
                         <Col>
@@ -105,6 +131,5 @@ const SingleTableForm = () => {
         </div>
     )
 };
-
 
 export default SingleTableForm;
