@@ -10,7 +10,9 @@ import { Row, Col, Button, Form as ReactForm } from "react-bootstrap";
 const SingleTableForm = () => {
     
     const {tableId} = useParams();
-    const singleTable = useSelector(state => getTableById(state, parseInt(tableId)));
+    const singleTable = useSelector(state => getTableById(state, tableId));
+    //const singleTable = useSelector(state => getTableById(state, parseInt(props.id)));
+    //const card = useSelector(state => getCardById(state, props.id))
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const id = singleTable.id;
@@ -80,7 +82,7 @@ const SingleTableForm = () => {
                 <Form.Group>
                     <Row className="mb-3">
                         <Form.Label as='legend' column sm={1}>
-                            <strong>Status:{status}</strong>
+                            <strong>Status</strong>
                         </Form.Label>
                         <Col sm={3}>
                             <Form.Select value= {status} onChange={ event => setStatus(event.target.value)} aria-label="Default select example">
@@ -93,21 +95,23 @@ const SingleTableForm = () => {
                     </Row>
                 </Form.Group>
                 <Form.Group>
-                    <Row className="mb-3">
+                    <Row className="mb-3 align-items-center">
                         <Form.Label column sm={1}>
                             <strong>People:</strong>
                         </Form.Label>
-                        <Col sm={1}>
+                        <Col sm={2}>
                             <Form.Control type='number' min='0' max={maxPeopleAmount} value={peopleAmount} placeholder='Table peopleAmount...' onChange={event => setPeopleAmount(event.target.value)} />
                         </Col>
-                        <span>/</span>
                         <Col sm={1}>
+                            <span>/</span>
+                        </Col>
+                        <Col sm={2}>
                             <Form.Control type='number' max="10" value={maxPeopleAmount} placeholder='Table maxPeopleAmount...' onChange={event => setMaxPeopleAmount(event.target.value)} />
                         </Col>
                     </Row>
                 </Form.Group>
-                {status !== "Reserved" && (
-                <Form.Group >
+                {status === "Busy" && (
+                <Form.Group>
                     <Row className='mb-3'>
                         <Form.Label column sm={1} htmlFor="bill">
                             <strong>Bill:</strong>
@@ -127,7 +131,7 @@ const SingleTableForm = () => {
                 </Form.Group>
             </Form>
         </div>
-    )
+    );
 };
 
 export default SingleTableForm;

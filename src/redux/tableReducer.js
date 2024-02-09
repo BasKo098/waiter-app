@@ -1,7 +1,7 @@
 import { API_URL } from "./config.js";
 import shortid from "shortid";
 // selectors
-export const getTableById =({ tables}, tableId) => tables.find(table => table.id === tableId);
+export const getTableById = (state, tableId) => state.tables.find((table) => table.id === tableId);
 export const getAllTables = ({ tables }) => tables;
 
 //actions
