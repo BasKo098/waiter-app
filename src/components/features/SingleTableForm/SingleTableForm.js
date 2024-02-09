@@ -52,8 +52,6 @@ const SingleTableForm = () => {
         }
     },[singleTable,navigate]);
 
-
-
     useEffect(() => { 
         const peopleAmountValue = parseInt(peopleAmount);
         const maxPeopleAmountValue = parseInt(maxPeopleAmount);
@@ -70,7 +68,6 @@ const SingleTableForm = () => {
             setMaxPeopleAmount(0);
         }
     }, [peopleAmount, maxPeopleAmount]);
-
 
     if (!singleTable) {
         return <div>Loading...</div>; 
