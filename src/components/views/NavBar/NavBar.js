@@ -11,9 +11,7 @@ const NavBar = () => {
       <Container>
         <Nav>
           <Nav.Item>
-            <Nav.Link as={NavLink} to="/table/:tableId">
-              WaiterApp
-            </Nav.Link>
+            <Navbar.Brand href="/">Waiter App</Navbar.Brand>
           </Nav.Item>
         </Nav>
         <Nav>
