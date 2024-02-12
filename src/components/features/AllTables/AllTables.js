@@ -24,7 +24,7 @@ const AllTables = () => {
                                 </Col>
                                 <Col>
                                     <p className="px-0"></p>
-                                    <p><strong>Status:</strong>{table.status}</p>
+                                    <p><strong>Status: </strong>{table.status}</p>
                                 </Col>
                             </Row>
                         </Col>

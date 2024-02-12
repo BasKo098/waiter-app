@@ -99,14 +99,12 @@ const SingleTableForm = () => {
                         <Form.Label column sm={1}>
                             <strong>People:</strong>
                         </Form.Label>
-                        <Col sm={2}>
-                            <Form.Control type='number' min='0' max={maxPeopleAmount} value={peopleAmount} placeholder='Table peopleAmount...' onChange={event => setPeopleAmount(event.target.value)} />
-                        </Col>
-                        <Col sm={1}>
-                            <span>/</span>
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Control type='number' max="10" value={maxPeopleAmount} placeholder='Table maxPeopleAmount...' onChange={event => setMaxPeopleAmount(event.target.value)} />
+                        <Col sm={4}>
+                            <div className="d-flex align-items-center">
+                                <Form.Control type='number' min='0' max={maxPeopleAmount} value={peopleAmount} placeholder='Table peopleAmount...' onChange={event => setPeopleAmount(event.target.value)} />
+                                <span className="mx-2">/</span>
+                                <Form.Control type='number' max="10" value={maxPeopleAmount} placeholder='Table maxPeopleAmount...' onChange={event => setMaxPeopleAmount(event.target.value)} />
+                            </div>
                         </Col>
                     </Row>
                 </Form.Group>
@@ -116,7 +114,7 @@ const SingleTableForm = () => {
                         <Form.Label column sm={1} htmlFor="bill">
                             <strong>Bill:</strong>
                         </Form.Label>
-                        <Col sm={2}>
+                        <Col sm={1}>
                             <Form.Control id="bill" type='number' value={bill} placeholder="Table bill" onChange={event => setBill(event.target.value)} />
                         </Col>
                     </Row>
