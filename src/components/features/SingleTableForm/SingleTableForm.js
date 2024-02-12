@@ -82,7 +82,7 @@ const SingleTableForm = () => {
                 <Form.Group>
                     <Row className="mb-3">
                         <Form.Label as='legend' column sm={1}>
-                            <strong>Status</strong>
+                            <strong>Status: </strong>
                         </Form.Label>
                         <Col sm={3}>
                             <Form.Select value= {status} onChange={ event => setStatus(event.target.value)} aria-label="Default select example">
@@ -96,7 +96,7 @@ const SingleTableForm = () => {
                 </Form.Group>
                 <Form.Group>
                     <Row className="mb-3 align-items-center">
-                        <Form.Label column sm={4}>
+                        <Form.Label column sm={1}>
                             <strong>People:</strong>
                         </Form.Label>
                         <Col sm={2}>
@@ -112,7 +112,7 @@ const SingleTableForm = () => {
                 <Form.Group>
                     <Row className='mb-3'>
                         <Form.Label column sm={1} htmlFor="bill">
-                            <strong>Bill:</strong>
+                            <strong>Bill: </strong>
                         </Form.Label>
                         <Col sm={1}>
                             <Form.Control id="bill" type='number' value={bill} placeholder="Table bill" onChange={event => setBill(event.target.value)} />
