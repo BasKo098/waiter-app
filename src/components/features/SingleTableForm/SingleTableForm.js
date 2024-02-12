@@ -99,7 +99,7 @@ const SingleTableForm = () => {
                         <Form.Label column sm={1}>
                             <strong>People:</strong>
                         </Form.Label>
-                        <Col sm={4}>
+                        <Col sm={2}>
                             <div className="d-flex align-items-center">
                                 <Form.Control type='number' min='0' max={maxPeopleAmount} value={peopleAmount} placeholder='Table peopleAmount...' onChange={event => setPeopleAmount(event.target.value)} />
                                 <span className="mx-2">/</span>
