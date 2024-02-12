@@ -20,7 +20,7 @@ const AllTables = () => {
                         <Col>
                             <Row>
                                 <Col>
-                                    <h2>Table{table.id}</h2>
+                                    <h2>Table {table.id}</h2>
                                 </Col>
                                 <Col>
                                     <p className="px-0"></p>
