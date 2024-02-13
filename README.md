@@ -1,3 +1,6 @@
+https://replit.com/@basia7kosinska/waiter-app
+https://e73dc4f1-bd8b-4848-95a4-bfed6edc78bd-00-26car8fnz3py4.riker.replit.dev/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
