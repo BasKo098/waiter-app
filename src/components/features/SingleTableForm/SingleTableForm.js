@@ -97,7 +97,7 @@ const SingleTableForm = () => {
                 <Form.Group>
                     <Row className="mb-3 align-items-center">
                         <Form.Label column sm={1}>
-                            <strong>People:</strong>
+                            <strong>People: </strong>
                         </Form.Label>
                         <Col sm={2}>
                             <div className="d-flex align-items-center">
